@@ -1,7 +1,7 @@
-# algorithm
+# js-algorithm
 
 ## 冒泡排序 Bubblesort
-冒泡排序算法的运作如下：（从后往前）
+冒泡排序算法的运作如下：
 
  1. 比较相邻的元素。如果第一个比第二个大，就交换他们两个
  2. 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数
@@ -26,6 +26,38 @@
         }
       }
     }
+    return arr
+  }
+
+  let arr
+  bubbleSort(arr)
+```
+
+## 双向冒泡排序 Shakersort
+双向冒泡排序是冒泡排序的一个简易升级版, 又称鸡尾酒排序. 冒泡排序是从低到高(或者从高到低)单向排序, 双向冒泡排序顾名思义就是从两个方向分别排序(通常, 先从低到高, 然后从高到低). 因此它比冒泡排序性能稍好一些.
+
+```
+  const shakerSort = (arr)=> {
+
+    const length = arr.length
+
+    for (let i = 0; i < length; i++) {
+
+      //第一轮，将最小的数冒泡到前面
+      for(let j = i; j < length; j++) {
+        if (arr[j] > arr[j+1]) {
+          [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
+        }
+      }
+
+      //第二轮，将最大的数冒泡到后面
+      for (let j = length; j > i; j--) {
+        if (arr[j-1] > arr[j]) {
+          [arr[j-1], arr[j]] = [arr[j], arr[j-1]]
+        }
+      }
+    }
+
     return arr
   }
 
