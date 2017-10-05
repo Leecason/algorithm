@@ -1,6 +1,6 @@
 # algorithm
 
-## 冒泡排序 bubbleSort
+## 冒泡排序 Bubblesort
 冒泡排序算法的运作如下：（从后往前）
 
  1. 比较相邻的元素。如果第一个比第二个大，就交换他们两个
@@ -9,9 +9,6 @@
  4. 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较
 
 ```
-// 确定数组
-  const arr
-
   const bubbleSort = (arr)=> {
 
     // 获取数组个数
@@ -32,5 +29,41 @@
     return arr
   }
 
+  let arr
   bubbleSort(arr)
+```
+
+## 快速排序 Quicksort
+***快速排序（Quicksort）是对冒泡排序的一种改进。***
+
+它的基本思想是：
+通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
+
+```
+  const quickSort = (arr)=> {
+
+    // 检查数组的元素个数，如果小于等于1，就返回。
+　　if (arr.length <= 1) { return arr; }
+　　
+　　// 选择"基准"（pivot），并将其与原数组分离，再定义两个空数组，用来存放一左一右的两个子集。
+　　let pivotIndex = Math.floor(arr.length / 2);
+　　let pivot = arr.splice(pivotIndex, 1)[0];
+　　let left = [];
+　　let right = [];
+　　
+　　// 小于"基准"的元素放入左边的子集，大于基准的元素放入右边的子集。
+　　for (let i = 0; i < arr.length; i++){
+　　　　if (arr[i] < pivot) {
+　　　　　　left.push(arr[i]);
+　　　　} else {
+　　　　　　right.push(arr[i]);
+　　　　}
+　　}
+　　
+　　// 最后，使用递归不断重复这个过程，就可以得到排序后的数组。
+　　return quickSort(left).concat([pivot], quickSort(right));
+  };
+
+  let arr
+  quickSort(arr)
 ```
