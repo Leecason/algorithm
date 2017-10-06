@@ -8,7 +8,7 @@
  3. 针对所有的元素重复以上的步骤，除了最后一个
  4. 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较
 
-```
+```javascript
   const bubbleSort = (arr)=> {
 
     // 获取数组个数
@@ -36,7 +36,7 @@
 ## 双向冒泡排序 Shakersort
 双向冒泡排序是冒泡排序的一个简易升级版, 又称鸡尾酒排序. 冒泡排序是从低到高(或者从高到低)单向排序, 双向冒泡排序顾名思义就是从两个方向分别排序(通常, 先从低到高, 然后从高到低). 因此它比冒泡排序性能稍好一些.
 
-```
+```javascript
   const shakerSort = (arr)=> {
 
     const length = arr.length;
@@ -71,7 +71,7 @@
 它的基本思想是：
 通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列。
 
-```
+```javascript
   const quickSort = (arr)=> {
 
     const length = arr.length;
@@ -106,7 +106,7 @@
 它的基本思想是：
 每步将一个待排序的纪录，按其关键码值的大小插入前面已经排序的文件中适当位置上，直到全部插入完为止。
 
-```
+```javascript
   const directInsertSort = (arr)=> {
 
     const length = arr.length;
@@ -146,7 +146,7 @@
 将新元素插入到该位置后；
 重复上述两步
 
-```
+```javascript
   const binaryInsertSort = (arr)=> {
 
     const length = arr.length
