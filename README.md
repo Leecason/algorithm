@@ -12,7 +12,7 @@
   const bubbleSort = (arr)=> {
 
     // 获取数组个数
-    const length = arr.length
+    const length = arr.length;
 
     // 一共执行 i = length - 1 次排序
     for (let i = 0; i < length; i++) {
@@ -26,11 +26,11 @@
         }
       }
     }
-    return arr
+    return arr;
   }
 
-  let arr
-  bubbleSort(arr)
+  let arr;
+  bubbleSort(arr);
 ```
 
 ## 双向冒泡排序 Shakersort
@@ -39,7 +39,7 @@
 ```
   const shakerSort = (arr)=> {
 
-    const length = arr.length
+    const length = arr.length;
 
     for (let i = 0; i < length; i++) {
 
@@ -58,11 +58,11 @@
       }
     }
 
-    return arr
+    return arr;
   }
 
-  let arr
-  shakerSort(arr)
+  let arr;
+  shakerSort(arr);
 ```
 
 ## 快速排序 Quicksort
@@ -74,17 +74,19 @@
 ```
   const quickSort = (arr)=> {
 
+    const length = arr.length;
+
     // 检查数组的元素个数，如果小于等于1，就返回。
-　　if (arr.length <= 1) { return arr; }
+　　if (length <= 1) { return arr; }
 　　
 　　// 选择"基准"（pivot），并将其与原数组分离，再定义两个空数组，用来存放一左一右的两个子集。
-　　let pivotIndex = Math.floor(arr.length / 2);
+　　let pivotIndex = Math.floor(length / 2);
 　　let pivot = arr.splice(pivotIndex, 1)[0];
 　　let left = [];
 　　let right = [];
 　　
 　　// 小于"基准"的元素放入左边的子集，大于基准的元素放入右边的子集。
-　　for (let i = 0; i < arr.length; i++){
+　　for (let i = 0; i < length; i++){
 　　　　if (arr[i] < pivot) {
 　　　　　　left.push(arr[i]);
 　　　　} else {
@@ -96,8 +98,8 @@
 　　return quickSort(left).concat([pivot], quickSort(right));
   };
 
-  let arr
-  quickSort(arr)
+  let arr;
+  quickSort(arr);
 ```
 
 ## 直接插入排序 DirectInsertsort
@@ -107,7 +109,7 @@
 ```
   const directInsertSort = (arr)=> {
 
-    const length = arr.length
+    const length = arr.length;
 
     for(let i = 1; i < length; i++) {
 
@@ -133,8 +135,8 @@
 　　return arr;
   };
 
-  let arr
-  directInsertSort(arr)
+  let arr;
+  directInsertSort(arr);
 ```
 
 ## 二分插入排序 BinaryInsertsort
@@ -173,6 +175,6 @@
 　　return arr;
   };
 
-  let arr
-  binaryInsertSort(arr)
+  let arr;
+  binaryInsertSort(arr);
 ```
