@@ -126,7 +126,7 @@
         //游标前移一位
         j--;
       }
-      if(j+1!=i) { //避免同一个元素赋值给自身
+      if(j+1 != i) { //避免同一个元素赋值给自身
 
         //将当前元素插入预留空位
         arr[j+1] = current;
@@ -141,10 +141,10 @@
 
 ## 二分插入排序 BinaryInsertsort
 它的基本思想是：
-从第一个元素开始，该元素可以认为已经被排序；
-取出下一个元素，在已经排序的元素序列中二分查找到第一个比它大的数的位置；
-将新元素插入到该位置后；
-重复上述两步
+1. 从第一个元素开始，该元素可以认为已经被排序；
+2. 取出下一个元素，在已经排序的元素序列中二分查找到第一个比它大的数的位置；
+3. 将新元素插入到该位置后；
+4. 重复上述两步
 
 ```javascript
   const binaryInsertSort = (arr)=> {
@@ -166,7 +166,7 @@
       }
 
       for (let j = i - 1; j >= low; j--) { //插入位置之后的元素全部往后移一位
-        arr[j + 1] = arr[j]
+        arr[j+1] = arr[j]
       }
 
       arr[low] = current; //插入元素
@@ -177,4 +177,42 @@
 
   let arr;
   binaryInsertSort(arr);
+```
+
+## 希尔排序 Shellsort
+***希尔排序的实质是分组直接插入排序，该方法又称缩小增量排序。***
+该方法的基本思想是：
+1. 将数组拆分为若干个子分组, 每个分组由相距一定”增量”的元素组成
+2. 然后对每个子分组应用直接插入排序
+3. 逐步减小”增量”, 重复步骤1,2
+4. 直至”增量”为1, 这是最后一个排序, 此时的排序, 也就是对全数组进行直接插入排序
+
+```javascript
+  const shellSort = (arr)=> {
+
+    const length = arr.length;
+
+    let gap = Math.floor(length / 2); //步长
+
+    while(gap != 0) {
+      for(let i = gap; i < length; i++) { //按步长分组
+        let current = arr[i]; //当前元素
+
+        let j = i - gap; //待比较元素index
+
+        while(j >= 0 && arr[j] > current) { //待比较元素比当前元素大
+          arr[j + gap] = arr[j]; //将待比较元素后移gap位
+
+          j -= gap; //游标前移gap位
+        }
+        arr[j+gap] = current; //将当前元素插入预留空位
+      }
+      gap = Math.floor(gap / 2)
+    }
+
+　　return arr;
+  };
+
+  let arr;
+  shellSort(arr);
 ```
