@@ -62,7 +62,7 @@
   }
 
   let arr
-  bubbleSort(arr)
+  shakerSort(arr)
 ```
 
 ## 快速排序 Quicksort
@@ -98,4 +98,42 @@
 
   let arr
   quickSort(arr)
+```
+
+## 插入排序 Insertsort
+### 直接插入排序 DirectInsertionsort
+它的基本思想是：
+每步将一个待排序的纪录，按其关键码值的大小插入前面已经排序的文件中适当位置上，直到全部插入完为止。
+
+```
+  const directInsertionSort = (arr)=> {
+
+    const length = arr.length
+
+    for(let i = 1; i < length; i++) {
+
+      //当前元素
+      let current = arr[i];
+
+      //待比较元素index
+      let j = i - 1;
+      while(j >= 0 && arr[j] > current) { //待比较元素比当前元素大
+
+        //待比较元素后移一位
+        arr[j+1] = arr[j];
+
+        //游标前移一位
+        j--;
+      }
+      if(j+1!=i) { //避免同一个元素赋值给自身
+
+        //将当前元素插入预留空位
+        arr[j+1] = current;
+      }
+    }
+　　return arr;
+  };
+
+  let arr
+  directInsertionSort(arr)
 ```
