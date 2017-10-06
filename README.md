@@ -100,13 +100,12 @@
   quickSort(arr)
 ```
 
-## 插入排序 Insertsort
-### 直接插入排序 DirectInsertionsort
+## 直接插入排序 DirectInsertsort
 它的基本思想是：
 每步将一个待排序的纪录，按其关键码值的大小插入前面已经排序的文件中适当位置上，直到全部插入完为止。
 
 ```
-  const directInsertionSort = (arr)=> {
+  const directInsertSort = (arr)=> {
 
     const length = arr.length
 
@@ -135,5 +134,45 @@
   };
 
   let arr
-  directInsertionSort(arr)
+  directInsertSort(arr)
+```
+
+## 二分插入排序 BinaryInsertsort
+它的基本思想是：
+从第一个元素开始，该元素可以认为已经被排序；
+取出下一个元素，在已经排序的元素序列中二分查找到第一个比它大的数的位置；
+将新元素插入到该位置后；
+重复上述两步
+
+```
+  const binaryInsertSort = (arr)=> {
+
+    const length = arr.length
+
+    for(let i = 1; i < length; i++) {
+      let current = arr[i];
+      let low = 0;
+      let high = i - 1;
+
+      while(low <= high) { //折半查找
+        let mid = parseInt((low + high) / 2);
+        if(current < arr[mid]) { //插入点在低半区
+          high = mid - 1;
+        } else { //插入点在高半区
+          low = mid + 1;
+        }
+      }
+
+      for (let j = i - 1; j >= low; j--) { //插入位置之后的元素全部往后移一位
+        arr[j + 1] = arr[j]
+      }
+
+      arr[low] = current; //插入元素
+    }
+
+　　return arr;
+  };
+
+  let arr
+  binaryInsertSort(arr)
 ```
