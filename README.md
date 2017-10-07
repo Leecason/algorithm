@@ -216,3 +216,30 @@
   let arr;
   shellSort(arr);
 ```
+
+## 选择排序 Selectionsort
+它的工作原理是每一次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。
+
+***选择排序是不稳定的排序方法***
+
+选择排序每次交换的元素都有可能不是相邻的, 因此它有可能打破原来值为相同的元素之间的顺序. 比如数组[2,2,1,3], 正向排序时, 第一个数字2将与数字1交换, 那么两个数字2之间的顺序将和原来的顺序不一致, 虽然它们的值相同, 但它们相对的顺序却发生了变化. 我们将这种现象称作**不稳定性**.
+
+```javascript
+  const selectionSort = (arr)=> {
+
+    const length = arr.length;
+
+    for(let i = 0; i < length; i++) {
+      for(let j = i; j < length; j++) {
+        if (arr[i] > arr [j]) {
+          [arr[i], arr[j]] = [arr[j], arr[i]]
+        }
+      }
+    }
+
+　　return arr;
+  };
+
+  let arr;
+  selectionSort(arr);
+```
