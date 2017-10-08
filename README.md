@@ -243,3 +243,54 @@
   let arr;
   selectionSort(arr);
 ```
+
+## 堆排序 Heapsort
+堆排序是指利用堆积树（堆）这种数据结构所设计的一种排序算法，它是选择排序的一种。可以利用数组的特点快速定位指定索引的元素。堆分为大根堆和小根堆，是完全二叉树。大根堆的要求是每个节点的值都不大于其父节点的值，即A[PARENT[i]] >= A[i]。
+
+> 并非所有的序列都是堆, 对于序列k1, k2,…kn, 需要满足如下条件才行:<br>
+ki <= k(2i) 且 ki<=k(2i+1)(1≤i≤ n/2), 即为小根堆, 将<=换成>=, 那么则是大根堆. 我们可以将这里的堆看作完全二叉树, k(i) 相当于是二叉树的非叶子节点, k(2i) 则是左子节点, k(2i+1)是右子节点.
+
+算法的基本思想(以大根堆为例):
+1. 先将初始序列K[1..n]建成一个大根堆, 此堆为初始的无序区
+2. 再将关键字最大的记录K1 (即堆顶)和无序区的最后一个记录K[n]交换, 由此得到新的无序区K[1..n-1]和有序区K[n], 且满足K[1..n-1].keys≤K[n].key
+3. 交换K1 和 K[n] 后, 堆顶可能违反堆性质, 因此需将K[1..n-1]调整为堆. 然后重复步骤2, 直到无序区只有一个元素时停止
+
+```javascript
+  const heapify = (arr, i, length)=> { //堆调整
+    let left = i * 2 + 1,
+        right = i * 2 + 2,
+        largest = i;
+
+    if(left < length && arr[largest] < arr[left]) {
+      largest = left;
+    }
+    if(right < length && arr[largest] < arr[right]) {
+      largest = right;
+    }
+    if(largest != i) { //最大索引不是初始索引
+      [arr[i], arr[largest]] = [arr[largest], arr[i]];
+
+      //继续解决交换过来的节点对堆造成的影响
+      heapify(arr, largest, length);
+    }
+  }
+
+  const heapSort = (arr)=> {
+    //建立大顶堆
+    let length = arr.length;
+
+    for(let i = parseInt(length / 2) - 1; i >= 0; i--) {
+      heapify(arr, i, length)
+    }
+
+    for(let i = length - 1; i > 0; i--) {
+      [arr[0], arr[i]] = [arr[i], arr[0]];
+      heapify(arr, 0, --length);
+    }
+
+    return arr;
+  }
+
+  let arr;
+  heapSort(arr);
+```
