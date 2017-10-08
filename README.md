@@ -80,10 +80,10 @@
 　　if (length <= 1) { return arr; }
 　　
 　　// 选择"基准"（pivot），并将其与原数组分离，再定义两个空数组，用来存放一左一右的两个子集。
-　　let pivotIndex = Math.floor(length / 2);
-　　let pivot = arr.splice(pivotIndex, 1)[0];
-　　let left = [];
-　　let right = [];
+　　let pivotIndex = Math.floor(length / 2),
+　　    pivot = arr.splice(pivotIndex, 1)[0],
+       left = [],
+       right = [];
 　　
 　　// 小于"基准"的元素放入左边的子集，大于基准的元素放入右边的子集。
 　　for (let i = 0; i < length; i++){
@@ -112,26 +112,18 @@
     const length = arr.length;
 
     for(let i = 1; i < length; i++) {
+      let current = arr[i], //当前元素
+          j = i - 1; //待比较元素index
 
-      //当前元素
-      let current = arr[i];
-
-      //待比较元素index
-      let j = i - 1;
       while(j >= 0 && arr[j] > current) { //待比较元素比当前元素大
-
-        //待比较元素后移一位
-        arr[j+1] = arr[j];
-
-        //游标前移一位
-        j--;
+        arr[j+1] = arr[j]; //待比较元素后移一位
+        j--; //游标前移一位
       }
       if(j+1 != i) { //避免同一个元素赋值给自身
-
-        //将当前元素插入预留空位
-        arr[j+1] = current;
+        arr[j+1] = current; //将当前元素插入预留空位
       }
     }
+
 　　return arr;
   };
 
@@ -152,9 +144,9 @@
     const length = arr.length
 
     for(let i = 1; i < length; i++) {
-      let current = arr[i];
-      let low = 0;
-      let high = i - 1;
+      let current = arr[i],
+          low = 0,
+          high = i - 1;
 
       while(low <= high) { //折半查找
         let mid = parseInt((low + high) / 2);
@@ -196,9 +188,9 @@
 
     while(gap != 0) {
       for(let i = gap; i < length; i++) { //按步长分组
-        let current = arr[i]; //当前元素
+        let current = arr[i], //当前元素
 
-        let j = i - gap; //待比较元素index
+            j = i - gap; //待比较元素index
 
         while(j >= 0 && arr[j] > current) { //待比较元素比当前元素大
           arr[j + gap] = arr[j]; //将待比较元素后移gap位
