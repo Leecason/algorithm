@@ -99,7 +99,7 @@
     isEmpty: ()=> { //判空
       return this.length === 0
     },
-    size: ()=> {
+    size: ()=> { //链表长度
       return this.length
     },
     clear: ()=> { //清空

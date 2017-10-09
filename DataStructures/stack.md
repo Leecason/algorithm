@@ -1,16 +1,12 @@
 ## 栈 LIFO
 ```javascript
-  function Stack(arr) {
+  function Stack(arr = []) {
     this.init(arr)
   }
   Stack.prototype = {
     constructor: Stack,
     init: (arr)=> { //初始化
-      if(arr) {
-        this.items = arr
-      } else {
-        this.items = []
-      }
+      this.items = arr
     },
     push: (element)=> { //入栈
       this.items.push(element)

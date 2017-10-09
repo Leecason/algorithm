@@ -1,16 +1,12 @@
 ## 队列 FIFO
 ```javascript
-  function Queue(arr) {
+  function Queue(arr = []) {
     this.init(arr)
   }
   Queue.prototype = {
     constructor: Queue,
     init: (arr)=> { //初始化
-      if(arr) {
-        this.items = arr
-      } else {
-        this.items = []
-      }
+      this.items = arr
     },
     append: (element)=> { //入队
       this.items.push(element)
