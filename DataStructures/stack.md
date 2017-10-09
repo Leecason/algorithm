@@ -1,27 +1,22 @@
 ## 栈 LIFO
 ```javascript
   function Stack(arr = []) {
-    this.init(arr)
-  }
-  Stack.prototype = {
-    constructor: Stack,
-    init: (arr)=> { //初始化
-      this.items = arr
+    let items = arr;
+
+    this.push = (element)=> { //入栈
+      items.push(element)
     },
-    push: (element)=> { //入栈
-      this.items.push(element)
+    this.pop = ()=> { //出栈
+      return items.pop()
     },
-    pop: ()=> { //出栈
-      return this.items.pop()
+    this.top = ()=> { //取栈顶元素
+      return items[items.length - 1]
     },
-    top: ()=> { //取栈顶元素
-      return this.items[this.items.length - 1]
+    this.isEmpty = ()=> { //判空
+      return items.length === 0
     },
-    isEmpty: ()=> { //判空
-      return this.items.length === 0
-    },
-    clear: ()=> { //清空
-      this.items = []
+    this.clear = ()=> { //清空
+      items = []
     }
   }
 ```
