@@ -1,27 +1,22 @@
 ## 队列 FIFO
 ```javascript
   function Queue(arr = []) {
-    this.init(arr)
-  }
-  Queue.prototype = {
-    constructor: Queue,
-    init: (arr)=> { //初始化
-      this.items = arr
+    let items = arr;
+
+    this.append = (element)=> { //入队
+      items.push(element)
     },
-    append: (element)=> { //入队
-      this.items.push(element)
+    this.server = ()=> { //出队
+      return items.shift()
     },
-    server: ()=> { //出队
-      return this.items.shift()
+    this.isEmpty = ()=> { //判空
+      return items.length === 0
     },
-    isEmpty: ()=> { //判空
-      return this.items.length === 0
+    this.size = ()=> {
+      return items.length
     },
-    size: ()=> {
-      return this.items.length
-    },
-    clear: ()=> { //清空
-      this.items = []
+    this.clear = ()=> { //清空
+      items = []
     }
   }
 ```
