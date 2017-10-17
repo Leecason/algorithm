@@ -5,16 +5,20 @@
 
     this.push = (element)=> { //入栈
       items.push(element)
-    },
+    }
+
     this.pop = ()=> { //出栈
       return items.pop()
-    },
+    }
+
     this.top = ()=> { //取栈顶元素
       return items[items.length - 1]
-    },
+    }
+
     this.isEmpty = ()=> { //判空
       return items.length === 0
-    },
+    }
+
     this.clear = ()=> { //清空
       items = []
     }

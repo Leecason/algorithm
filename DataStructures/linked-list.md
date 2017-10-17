@@ -26,7 +26,8 @@
       }
 
       length++; //更新链表长度
-    },
+    }
+
     this.removeAt = (position)=> { //删除特定位置的元素
       if(position < -1 && position > length) { //越界
         return null;
@@ -50,11 +51,13 @@
 
         return current.element //返回删除的元素
       }
-    },
+    }
+
     this.remove = (element)=> {
       let index = this.indexOf(element)
       return this.removeAt(index)
     }
+
     this.insert = (position, element)=> { //在特定位置插入一个元素
       if(position < 0 && position > length) { //越界
         return false
@@ -81,7 +84,8 @@
 
         return true
       }
-    },
+    }
+
     this.indexOf = (element)=> { //查找在表中位置
       let current = head,
           index = 0;
@@ -95,16 +99,20 @@
       }
 
       return -1; //没找到返回-1
-    },
+    }
+
     this.getHead = ()=> { //返回第一个元素
       return head
     }
+
     this.isEmpty = ()=> { //判空
       return length === 0
-    },
+    }
+
     this.size = ()=> { //链表长度
       return length
-    },
+    }
+
     this.clear = ()=> { //清空
       head = null
     }

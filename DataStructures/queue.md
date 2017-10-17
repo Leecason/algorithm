@@ -5,16 +5,20 @@
 
     this.append = (element)=> { //入队
       items.push(element)
-    },
+    }
+
     this.server = ()=> { //出队
       return items.shift()
-    },
+    }
+
     this.isEmpty = ()=> { //判空
       return items.length === 0
-    },
+    }
+
     this.size = ()=> {
       return items.length
-    },
+    }
+
     this.clear = ()=> { //清空
       items = []
     }
